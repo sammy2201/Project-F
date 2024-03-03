@@ -1,0 +1,25 @@
+.mainimage {
+     height: 300px;
+     width: 300px;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+
+
+}
+
+.imagediv {
+     background-color: #FFE4C9;
+}
+
+h2 {
+     margin-top: 10px;
+     margin-bottom: 10px;
+}
+
+.mainheading {
+     text-align: center;
+     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     margin-top: 15px;
+     margin-bottom: 15px;
+}

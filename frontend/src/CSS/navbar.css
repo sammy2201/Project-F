@@ -1,0 +1,28 @@
+.button {
+     background-color: #3E3232;
+     color: aliceblue;
+     transition: background-color 0.3s, color 0.3s;
+     border: none;
+
+     margin-left: 400px;
+
+
+}
+
+.cont {
+     width: 100%;
+}
+
+.button:hover,
+.button:active {
+     background-color: #7E6363;
+     color: aliceblue;
+}
+
+.bg-body-tertiary {
+     width: 100%;
+}
+
+.profilepic {
+     margin-left: 400px;
+}
