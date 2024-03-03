@@ -1,0 +1,21 @@
+.uploadform {
+     width: 70%;
+     margin: auto;
+     padding: 2%;
+     background-color: #FFE4C9;
+     margin-top: 5%;
+     margin-bottom: 5%;
+}
+
+h2 {
+     color: #3E3232;
+     text-align: center;
+     margin-bottom: 20px;
+     font-family: 'Courier New', Courier, monospace;
+}
+
+.btn-sub {
+     margin: auto;
+     margin-top: 10px;
+     margin-left: 35%;
+}

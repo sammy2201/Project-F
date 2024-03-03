@@ -126,6 +126,24 @@ app.get("/getData", async (req, res) => {
     res.send("Error fetching video");
   }
 });
+
+app.get("/getuserinfo", async (req, res) => {
+  var userinfo = {};
+  const username = await User.find();
+
+  username.forEach((user) => {
+    if (user.username === username_inserver) {
+      userinfo = {
+        userThatLoggedin: username_inserver,
+        typeOfUser_userThatLoggedin: typeOfUser_inserver,
+        nameofuserthatloggedin: user.name,
+        //    videoArray: user.CreatedVideoId,
+      };
+    }
+  });
+  res.json(userinfo);
+});
+
 ////////////////////////////////////post////////////////////////////////
 app.post("/login", async function (req, res) {
   const { username, password } = req.body;
