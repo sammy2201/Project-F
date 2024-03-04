@@ -70,6 +70,7 @@ const userSchema = new mongoose.Schema({
 const quizSchema = new mongoose.Schema({
   quizTitle: String,
   quizCreatedBy: String,
+  quizCreatorEmail: String,
   quizQuestions: [
     {
       Question: { type: String },
@@ -254,6 +255,18 @@ app.post("/adminregister", function (req, res) {
       typeOfUser_inserver = "admin";
     }
   );
+});
+
+app.post("/uploadquiz", function (req, res) {
+  if (username_inserver === "" || typeOfUser_inserver === "user") {
+    res.json("NOTOK");
+  } else {
+    const { title, createdby, questions, user_info } = req.body;
+    console.log("Title=", title);
+    console.log("createdby=", createdby);
+    console.log("questions=", questions);
+    console.log("user_info=", user_info.userThatLoggedin);
+  }
 });
 
 /////////////////////////////listen/////////////////////////////////
