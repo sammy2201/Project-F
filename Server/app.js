@@ -326,6 +326,33 @@ app.post("/quiz", async (req, res) => {
   }
 });
 
+app.post("/usernewpoints", async (req, res) => {
+  const { userid, quizid, points } = req.body;
+
+  try {
+    const updatedQuizData = {
+      quizId: quizid,
+      quizPoints: points.toString(),
+    };
+
+    const userdetails = await User.findOneAndUpdate(
+      { _id: userid },
+      { $push: { quizData: updatedQuizData } },
+      { new: true }
+    );
+
+    if (!userdetails) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    console.log("User details after update:", userdetails);
+    res.status(200).json({ message: "Quiz details updated successfully" });
+  } catch (error) {
+    console.error("Error updating quiz details:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 /////////////////////////////listen/////////////////////////////////
 
 let port = process.env.PORT;

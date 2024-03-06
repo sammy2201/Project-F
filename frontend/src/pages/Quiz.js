@@ -13,6 +13,7 @@ function Quiz(props) {
   const history = useNavigate();
   const [points, setpoints] = useState(0);
   const [userid, setuserid] = useState();
+  const [quizid, setquizid] = useState();
 
   useEffect(() => {
     const fetchD = async () => {
@@ -24,9 +25,10 @@ function Quiz(props) {
             history("/");
             alert("Kindly log in to access the course content");
           } else {
-            console.log("data", res.data);
+            console.log("data", res.data.quiz[0]._id);
             setuserid(res.data.username[0]._id);
             setquiz(res.data.quiz);
+            setquizid(res.data.quiz[0]._id);
           }
         });
       } catch (error) {
@@ -36,9 +38,19 @@ function Quiz(props) {
     fetchD();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitted answers:", selectedAnswers);
+    try {
+      const response = await Axios.post("http://localhost:3001/usernewpoints", {
+        userid: userid,
+        quizid: quizid,
+        points: points,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error("There was an error updating points!", error);
+    }
   };
 
   const fun_clicked_opp1 = (e, index) => {
@@ -54,8 +66,6 @@ function Quiz(props) {
   const url = window.location.href;
   const path = url.replace("http://localhost:3000/quiz/", "");
   const decodedPath = decodeURIComponent(path.replace(/%20/g, " "));
-
-  console.log("Points scored till now", points);
 
   if (!Array.isArray(quiz)) {
     return <div>No Quizzes available</div>;
