@@ -345,8 +345,7 @@ app.post("/usernewpoints", async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    console.log("User details after update:", userdetails);
-    res.status(200).json({ message: "Quiz details updated successfully" });
+    res.json("OK");
   } catch (error) {
     console.error("Error updating quiz details:", error);
     res.status(500).json({ message: "Internal Server Error" });

@@ -46,6 +46,12 @@ function Quiz(props) {
         userid: userid,
         quizid: quizid,
         points: points,
+      }).then((res) => {
+        if (res.data === "OK") {
+          history("/profile");
+        } else {
+          alert("There was a problem in server side");
+        }
       });
       console.log(response.data);
     } catch (error) {
