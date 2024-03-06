@@ -1,0 +1,33 @@
+.points {
+     color: green;
+     text-align: right;
+     margin-right: 10px;
+     margin-top: 10px;
+}
+
+.createdby {
+     text-align: center;
+}
+
+.question {
+     margin-left: 20px;
+}
+
+.center {
+     text-align: center;
+     margin-bottom: 50px;
+}
+
+.Form {
+     margin-left: 70px;
+}
+
+
+/* 
+.option1 {}
+
+.option2 {}
+
+.option3 {}
+
+.option4 {} */

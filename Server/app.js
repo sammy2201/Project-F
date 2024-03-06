@@ -74,14 +74,12 @@ const quizSchema = new mongoose.Schema({
   quizQuestions: [
     {
       Question: { type: String },
-      Options: [
-        {
-          one: { type: String },
-          two: { type: String },
-          three: { type: String },
-          four: { type: String },
-        },
-      ],
+      Options: {
+        one: { type: String },
+        two: { type: String },
+        three: { type: String },
+        four: { type: String },
+      },
       CorrectAnswer: { type: String },
     },
   ],
@@ -114,7 +112,12 @@ passport.deserializeUser(async (id, done) => {
 ////////////////////////////////////get////////////////////////////////
 app.get("/", async (req, res) => {
   try {
-    res.json({ typeOfUser_inserver: typeOfUser_inserver });
+    const [quiz, username] = await Promise.all([Quiz.find(), User.find()]);
+    if (quiz) {
+      res.json({ quiz: quiz, typeOfUser_inserver: typeOfUser_inserver });
+    } else {
+      res.send("Video not found");
+    }
   } catch (error) {
     res.send("Error fetching video");
   }
@@ -257,15 +260,69 @@ app.post("/adminregister", function (req, res) {
   );
 });
 
-app.post("/uploadquiz", function (req, res) {
+app.post("/uploadquiz", async function (req, res) {
   if (username_inserver === "" || typeOfUser_inserver === "user") {
     res.json("NOTOK");
   } else {
     const { title, createdby, questions, user_info } = req.body;
-    console.log("Title=", title);
-    console.log("createdby=", createdby);
-    console.log("questions=", questions);
-    console.log("user_info=", user_info.userThatLoggedin);
+    const questions_array = JSON.parse(req.body.questions);
+    if (username_inserver != "") {
+      if (typeOfUser_inserver == "admin") {
+        try {
+          const quiz_Questions = questions_array.map((q) => ({
+            Question: q.questions,
+            Options: {
+              one: q.o1,
+              two: q.o2,
+              three: q.o3,
+              four: q.o4,
+            },
+            CorrectAnswer: q.co,
+          }));
+          const quiz = new Quiz({
+            quizTitle: title,
+            quizCreatedBy: createdby,
+            quizCreatorEmail: user_info.userThatLoggedin,
+            quizQuestions: quiz_Questions,
+          });
+          await quiz.save();
+          res.json("OK");
+        } catch (error) {
+          console.error("Error saving to MongoDB:", error);
+          res.status(400).send(error);
+        }
+      } else {
+        res.json("adminlogin");
+        console.log("adminlogin");
+      }
+    } else {
+      res.json("adminlogin");
+      console.log("not at all login");
+    }
+  }
+});
+
+app.post("/quiz", async (req, res) => {
+  const quiz_title = req.body.path;
+  if (username_inserver === "") {
+    res.json("NOTOK");
+  } else {
+    try {
+      const quiz = await Quiz.find({ quizTitle: quiz_title });
+      const username = await User.find({ username: username_inserver });
+      //  const [quiz, username] = await Promise.all([Quiz.find(), User.find()]);
+      if (quiz) {
+        res.json({
+          quiz: quiz,
+          typeOfUser_inserver: typeOfUser_inserver,
+          username: username,
+        });
+      } else {
+        res.send("Video not found");
+      }
+    } catch (error) {
+      res.send("Error fetching video");
+    }
   }
 });
 

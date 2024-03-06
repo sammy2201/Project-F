@@ -13,11 +13,14 @@ function Ournavbar(props) {
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
-        <Container className="cont">
+        <Container fluid>
           <Navbar.Brand href="/">E-learning</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto">
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: "100px" }}
+              navbarScroll>
               {props.typeOfUser_inserver === "" ? (
                 <>
                   <NavDropdown title="Login" id="basic-nav-dropdown">
@@ -25,7 +28,7 @@ function Ournavbar(props) {
                       Login as a Student
                     </NavDropdown.Item>
                     <NavDropdown.Item href="/adminlogin">
-                      Login as a Teacher
+                      Login as a Admin
                     </NavDropdown.Item>
                   </NavDropdown>
                   <NavDropdown title="Register" id="basic-nav-dropdown">
@@ -33,26 +36,30 @@ function Ournavbar(props) {
                       Register as a Student
                     </NavDropdown.Item>
                     <NavDropdown.Item href="/adminregister">
-                      Register as a Teacher
+                      Register as a Admin
                     </NavDropdown.Item>
                   </NavDropdown>
                 </>
               ) : null}
-
-              {props.typeOfUser_inserver === "admin" ? (
-                <Button className="button ml-auto" href="/uploadquiz">
-                  Upload Quiz
-                </Button>
-              ) : null}
-              {props.typeOfUser_inserver !== "" && props.inprofile !== "yes" ? (
-                <>
-                  <Nav.Item className="profilepic">
-                    <Nav.Link href="/profile">
-                      <FontAwesomeIcon icon={faUser} />
-                    </Nav.Link>
-                  </Nav.Item>
-                </>
-              ) : null}
+              <Nav.Link href="#action1">
+                {props.typeOfUser_inserver === "admin" ? (
+                  <Button className="button upload_button" href="/uploadquiz">
+                    Upload Quiz
+                  </Button>
+                ) : null}
+              </Nav.Link>
+              <Nav.Link href="#action2">
+                {props.typeOfUser_inserver !== "" &&
+                props.inprofile !== "yes" ? (
+                  <>
+                    <Nav.Item className="profilepic">
+                      <Nav.Link href="/profile">
+                        <FontAwesomeIcon icon={faUser} />
+                      </Nav.Link>
+                    </Nav.Item>
+                  </>
+                ) : null}
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

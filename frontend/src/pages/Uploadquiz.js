@@ -6,6 +6,7 @@ import Ournavbar from "../Components/Ournavbar";
 import "../CSS/uploadform.css";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 const Uploadquiz = () => {
   const history = useNavigate();
@@ -189,14 +190,24 @@ const Uploadquiz = () => {
                 onChange={(e) => optionco_fun(e, index)}
               />
             </InputGroup>
-            {questions.length - 1 === index ? (
-              <button onClick={hangle_add_questions}>Add</button>
-            ) : null}
-            {questions.length > 1 ? (
-              <button onClick={() => hangle_remove_questions(index)}>
-                Remove
-              </button>
-            ) : null}
+            <div className="center-text">
+              {" "}
+              {questions.length - 1 === index ? (
+                <Button
+                  className="primary addbutton"
+                  onClick={hangle_add_questions}>
+                  Add
+                </Button>
+              ) : null}
+              {questions.length > 1 ? (
+                <Button
+                  className=" removebutton"
+                  variant="danger"
+                  onClick={() => hangle_remove_questions(index)}>
+                  Remove Question {index + 1}
+                </Button>
+              ) : null}
+            </div>
           </div>
         ))}
 
@@ -207,14 +218,6 @@ const Uploadquiz = () => {
           onClick={upload}
         />
       </div>
-      {/* <img className="image" src={`http://localhost:3001/uploads/` + i} />
-      {v ? (
-        <video width="320" height="240" controls loop autoPlay>
-          <source src={`http://localhost:3001/uploads/` + v} type="video/mp4" />
-        </video>
-      ) : (
-        <p>Loading video...</p>
-      )} */}
 
       <Footer />
     </div>

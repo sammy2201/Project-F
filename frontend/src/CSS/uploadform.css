@@ -19,3 +19,12 @@ h2 {
      margin-top: 10px;
      margin-left: 35%;
 }
+
+.removebutton {
+     margin-left: 5px;
+}
+
+.center-text {
+     text-align: center;
+     padding: 1%;
+}

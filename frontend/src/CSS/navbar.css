@@ -3,10 +3,7 @@
      color: aliceblue;
      transition: background-color 0.3s, color 0.3s;
      border: none;
-
-     margin-left: 400px;
-
-
+     /* margin-left: 400px; */
 }
 
 .cont {
@@ -23,6 +20,20 @@
      width: 100%;
 }
 
+/* .upload_button {
+     margin-right: 3%;
+     width: 200px;
+     white-space: nowrap;
+} */
+
 .profilepic {
-     margin-left: 400px;
+     margin-right: 0;
+     width: 100%;
+     height: 80%;
+     border-radius: 50%;
+     border: 2px solid #000;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-weight: bold;
 }
