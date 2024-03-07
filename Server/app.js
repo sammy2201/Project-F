@@ -134,17 +134,22 @@ app.get("/getData", async (req, res) => {
 app.get("/getuserinfo", async (req, res) => {
   var userinfo = {};
   const username = await User.find();
-
-  username.forEach((user) => {
+  const quiz = await Quiz.find();
+  const user = await User.findOne({ username: username_inserver });
+  if (user) {
     if (user.username === username_inserver) {
       userinfo = {
         userThatLoggedin: username_inserver,
         typeOfUser_userThatLoggedin: typeOfUser_inserver,
         nameofuserthatloggedin: user.name,
-        //    videoArray: user.CreatedVideoId,
+        quizdata: user.quizData,
+        quiz: quiz,
       };
     }
-  });
+  } else {
+    res.status(404).json({ error: "User not found" });
+    return;
+  }
   res.json(userinfo);
 });
 
