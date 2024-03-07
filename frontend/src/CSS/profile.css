@@ -1,0 +1,17 @@
+.card_profile {
+     background-color: #182b3a;
+     background-image: linear-gradient(315deg, #182b3a 0%, #20a4f3 74%);
+     margin-left: 10%;
+     color: white;
+}
+
+.heading {
+     margin-left: 20px;
+     margin-bottom: 20px;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.heading2 {
+
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

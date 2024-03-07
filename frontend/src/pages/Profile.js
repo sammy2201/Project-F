@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Ournavbar from "../Components/Ournavbar";
+import Card from "react-bootstrap/Card";
+import "../CSS/profile.css";
 
 function Profile() {
   const [name, setname] = useState("");
@@ -54,12 +56,17 @@ function Profile() {
   return (
     <div>
       <Ournavbar />
-      <h2>{name}</h2>
-      <h2>{email}</h2>
+      <h2 className="heading2">Name: {name}</h2>
+      <h2 className="heading2">Email: {email}</h2>
+      <h3 className="heading">Overview of Your Quiz Scores:</h3>
       {highestPointsQuizzes.map((quizItem) => (
         <div key={quizItem._id}>
-          <p>Quiz title: {quizItem.quizTitle}</p>
-          <p>Quiz Points: {quizItem.quizPoints}</p>
+          <Card className="card_profile" style={{ width: "18rem" }}>
+            <Card.Body>
+              <Card.Title>{quizItem.quizTitle}</Card.Title>
+              <Card.Text>Points: {quizItem.quizPoints}</Card.Text>
+            </Card.Body>
+          </Card>
         </div>
       ))}
     </div>
