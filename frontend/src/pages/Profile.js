@@ -3,8 +3,11 @@ import Axios from "axios";
 import Ournavbar from "../Components/Ournavbar";
 import Card from "react-bootstrap/Card";
 import "../CSS/profile.css";
+import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
+  const history = useNavigate();
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [userquiz, setuserquiz] = useState([]);
@@ -36,6 +39,21 @@ function Profile() {
     );
   }
 
+  async function logoutfun() {
+    try {
+      const response = await Axios.post("http://localhost:3001/logout", {
+        logout: true,
+      }).then((res) => {
+        if (res.data === "OK") {
+          history("/");
+        }
+      });
+    } catch (error) {
+      console.error("Error sending login request:", error);
+    }
+    console.log("you ar about to log out");
+  }
+
   // Group quizzes by their titles after finding corresponding quiz titles
   const groupedQuizzes = userquiz.reduce((acc, quizItem) => {
     const foundQuiz = quiz.find((q) => q._id === quizItem.quizId);
@@ -58,6 +76,13 @@ function Profile() {
       <Ournavbar />
       <h2 className="heading2">Name: {name}</h2>
       <h2 className="heading2">Email: {email}</h2>
+      <div className="logout">
+        {" "}
+        <Button variant="danger" onClick={logoutfun}>
+          Log out
+        </Button>
+      </div>
+
       <h3 className="heading">Overview of Your Quiz Scores:</h3>
       {highestPointsQuizzes.map((quizItem) => (
         <div key={quizItem._id}>

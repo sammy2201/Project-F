@@ -15,3 +15,8 @@
 
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.logout {
+     text-align: right;
+     margin-right: 10px;
+}

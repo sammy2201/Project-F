@@ -14,7 +14,7 @@ function Ournavbar(props) {
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
-          <Navbar.Brand href="/">E-learning</Navbar.Brand>
+          <Navbar.Brand href="/">Quiz App</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav

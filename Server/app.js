@@ -187,6 +187,19 @@ app.post("/login", async function (req, res) {
   });
 });
 
+app.post("/logout", async (req, res) => {
+  if (req.body.logout === true) {
+    try {
+      username_inserver = "";
+      typeOfUser_inserver = "";
+      res.json("OK");
+    } catch (error) {
+      console.error("Error in asynchronous operation:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+});
+
 app.post("/adminlogin", async function (req, res) {
   const { username, password } = req.body;
   const user = new User({
