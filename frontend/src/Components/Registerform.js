@@ -62,7 +62,11 @@ const Registerform = (props) => {
             </form>
           </div>
           <div className="col-md">
-            <img className="image" src={require("../images/login.svg")} />
+            <img
+              className="image"
+              src={require("../images/login.svg").default}
+              alt="Login Image"
+            />
           </div>
         </div>
       </div>

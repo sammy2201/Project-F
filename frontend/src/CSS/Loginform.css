@@ -75,7 +75,7 @@ h1 {
 
 
 .Formmain {
-     background-color: #FFE4C9;
+     /* background-color: #FFE4C9; */
      padding: 3em;
      height: 400px;
      border-radius: 20px;
@@ -83,7 +83,7 @@ h1 {
      border-top: 1px solid rgba(255, 255, 255, 0.3);
      -webkit-backdrop-filter: blur(10px);
      backdrop-filter: blur(10px);
-     box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+     /* box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2); */
      text-align: center;
      position: relative;
      transition: all 0.2s ease-in-out;
@@ -108,9 +108,9 @@ form a {
      font-size: 12px;
 }
 
-form a:hover {
+/* form a:hover {
      text-shadow: 2px 2px 6px #00000040;
-}
+} */
 
 form a:active {
      text-shadow: none;
@@ -164,9 +164,9 @@ form input[type=button]:active {
      background: rgba(255, 255, 255, 0.2);
 }
 
-form:hover {
+/* form:hover {
      margin: 4px;
-}
+} */
 
 ::-moz-placeholder {
      font-family: Montserrat, sans-serif;
