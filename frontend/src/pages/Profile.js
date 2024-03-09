@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import "../CSS/profile.css";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import { Image, Container } from "react-bootstrap";
 
 function Profile() {
   const history = useNavigate();
@@ -74,16 +75,42 @@ function Profile() {
   return (
     <div>
       <Ournavbar />
-      <h2 className="heading2">Name: {name}</h2>
-      <h2 className="heading2">Email: {email}</h2>
-      <div className="logout">
-        {" "}
-        <Button variant="danger" onClick={logoutfun}>
-          Log out
-        </Button>
-      </div>
 
-      <h3 className="heading">Overview of Your Quiz Scores:</h3>
+      <Card className="profilecard">
+        <div className="upper">
+          <Image src="https://i.imgur.com/Qtrsrk5.jpg" fluid />
+        </div>
+
+        <div className="user text-center">
+          <div className="profile">
+            <Image
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHvZ0pbf4bXvAJgVZVuRQqrNWnoWl96cV6wQ&usqp=CAU"
+              roundedCircle
+              width="80"
+            />
+          </div>
+        </div>
+
+        <div className="mt-5 text-center">
+          <h4 className="mb-0">{name}</h4>
+          <span className="text-muted d-block mb-2">{email}</span>
+
+          <div className="d-flex justify-content-between align-items-center mt-4 px-4">
+            <div className="stats">
+              <h6 className="mb-0">Quizzes</h6>
+              <span> {highestPointsQuizzes.length}</span>
+            </div>
+
+            <div className="stats">
+              <Button variant="danger" onClick={logoutfun}>
+                Log out
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <h3 className="heading">Overview of your quiz scores:</h3>
       {highestPointsQuizzes.map((quizItem) => (
         <div key={quizItem._id}>
           <Card className="card_profile" style={{ width: "18rem" }}>

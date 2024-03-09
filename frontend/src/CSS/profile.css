@@ -1,8 +1,11 @@
 .card_profile {
-     background-color: #182b3a;
-     background-image: linear-gradient(315deg, #182b3a 0%, #20a4f3 74%);
+     background-color: #eec0c6;
+     background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
+
      margin-left: 10%;
      color: white;
+
+
 }
 
 .heading {
@@ -12,11 +15,61 @@
 }
 
 .heading2 {
-
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .logout {
      text-align: right;
      margin-right: 10px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+
+
+.profilecard {
+     width: 380px;
+     border: none;
+     border-radius: 15px;
+     padding: 8px;
+     background-color: #fff;
+     height: 370px;
+     margin-left: 40%;
+}
+
+.upper {
+     height: 100px;
+}
+
+.upper img {
+     width: 100%;
+     border-top-left-radius: 10px;
+     border-top-right-radius: 10px;
+}
+
+.user {
+     position: relative;
+}
+
+.profile img {
+     height: 80px;
+     width: 80px;
+     margin-top: 2px;
+}
+
+.profile {
+     position: absolute;
+     top: -50px;
+     left: 38%;
+     height: 90px;
+     width: 90px;
+     border: 3px solid #fff;
+     border-radius: 50%;
+}
+
+
+
+.stats span {
+
+     font-size: 29px;
 }

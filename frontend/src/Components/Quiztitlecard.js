@@ -16,12 +16,6 @@ function Quiztitlecard(props) {
       <div className="card-container">
         {props.quizarray.map((q) => (
           <Card key={q._id}>
-            <Card.Img
-              variant="top"
-              className="cardimage"
-              src={require("../images/" + randomNumber + ".jpeg")}
-            />
-            {/* <Card.Img variant="top" className="cardimage" as={Icon} /> */}
             <Card.Body>
               <Card.Title>{q.quizTitle}</Card.Title>
               <Card.Text>This Quiz is created by: {q.quizCreatedBy}</Card.Text>

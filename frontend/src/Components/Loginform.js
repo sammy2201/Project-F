@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../CSS/Loginform.css"; // Make sure to adjust the path to your CSS file
+import "../CSS/Loginform.css";
 
 const Loginform = (props) => {
   const [userId, setuserId] = useState("");
